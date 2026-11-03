@@ -1,0 +1,2 @@
+Genera migraciones con: alembic revision --autogenerate -m "mensaje"
+
