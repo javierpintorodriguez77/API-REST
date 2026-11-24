@@ -5,7 +5,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import get_settings
-from app.routes import auth, health
+from app.routes import auth, health, libros
 
 settings = get_settings()
 app = FastAPI(title="Biblioteca API", version="1.0.0", docs_url=None if settings.environment == "prod" else "/docs", redoc_url=None if settings.environment == "prod" else "/redoc")
@@ -23,4 +23,5 @@ async def request_log(request: Request, call_next):
 
 app.include_router(health.router, prefix="/api/v1")
 app.include_router(auth.router, prefix="/api/v1")
+app.include_router(libros.router, prefix="/api/v1")
 
